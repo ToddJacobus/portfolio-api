@@ -12,15 +12,4 @@ class ContactVewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
     def perform_create(self, serializer):
         """create a new contact entry"""
         serializer.save()
-
-
-# class ContactVewSet(viewsets.ModelViewSet):
-#     """A simple, write-only viewset"""
-#     serializer_class = serializers.ContactSerializer
-#     queryset = Contact.objects.all()
-
-#     def perform_create(self, serializer):
-#         """create a new contact entry"""
-#         serializer.save()
-
         
