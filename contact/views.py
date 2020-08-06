@@ -12,4 +12,3 @@ class ContactVewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
     def perform_create(self, serializer):
         """create a new contact entry"""
         serializer.save()
-        
