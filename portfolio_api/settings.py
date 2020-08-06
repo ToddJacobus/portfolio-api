@@ -25,7 +25,11 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = True if os.environ.get('DEBUG').lower() == 'true' else False
 
-ALLOWED_HOSTS = ['localhost', 'jacobus-portfolio-api.herokuapp.com']
+ALLOWED_HOSTS = [
+    'localhost', 
+    'jacobus-portfolio-api.herokuapp.com', 
+    'https://jacobus-portfolio-api.herokuapp.com',
+    ]
 
 
 # Application definition
@@ -146,20 +150,20 @@ AUTH_USER_MODEL = 'core.User'
 # PRODUCTION SETTINGS
 
 # Throttling
-REST_FRAMEWORK = {
-    'DEFAULT_THROTTLE_CLASSES': [
-        'rest_framework.throttling.AnonRateThrottle',
-        'rest_framework.throttling.UserRateThrottle'
-    ],
-    'DEFAULT_THROTTLE_RATES': {
-        'anon': '100/day',
-        'user': '1000/day'
-    }
-}
+# REST_FRAMEWORK = {
+#     'DEFAULT_THROTTLE_CLASSES': [
+#         'rest_framework.throttling.AnonRateThrottle',
+#         'rest_framework.throttling.UserRateThrottle'
+#     ],
+#     'DEFAULT_THROTTLE_RATES': {
+#         'anon': '100/day',
+#         'user': '1000/day'
+#     }
+# }
 
 # Don't send tokens and keys over http
-CSRF_COOKIE_SECURE = True if not os.environ.get('DEBUG').lower() == 'true' else False
-SESSION_COOKIE_SECURE = True if not os.environ.get('DEBUG').lower() == 'true' else False
+# CSRF_COOKIE_SECURE = True if not os.environ.get('DEBUG').lower() == 'true' else False
+# SESSION_COOKIE_SECURE = True if not os.environ.get('DEBUG').lower() == 'true' else False
 
 
 # Configure Django App for Heroku.
