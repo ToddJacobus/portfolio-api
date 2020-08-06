@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 from urllib.parse import urlparse
-# import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -142,31 +141,23 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'static'),
-# )
-
 # Custom user model
 AUTH_USER_MODEL = 'core.User'
 
 # PRODUCTION SETTINGS
 
 # Throttling
-# REST_FRAMEWORK = {
-#     'DEFAULT_THROTTLE_CLASSES': [
-#         'rest_framework.throttling.AnonRateThrottle',
-#         'rest_framework.throttling.UserRateThrottle'
-#     ],
-#     'DEFAULT_THROTTLE_RATES': {
-#         'anon': '100/day',
-#         'user': '1000/day'
-#     }
-# }
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle'
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '100/day',
+        'user': '1000/day'
+    }
+}
 
 # Don't send tokens and keys over http
-# CSRF_COOKIE_SECURE = True if not os.environ.get('DEBUG').lower() == 'true' else False
-# SESSION_COOKIE_SECURE = True if not os.environ.get('DEBUG').lower() == 'true' else False
-
-
-# Configure Django App for Heroku.
-# django_heroku.settings(locals())
+CSRF_COOKIE_SECURE = True if not os.environ.get('DEBUG').lower() == 'true' else False
+SESSION_COOKIE_SECURE = True if not os.environ.get('DEBUG').lower() == 'true' else False
