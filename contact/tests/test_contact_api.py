@@ -23,12 +23,13 @@ class PublicContactsApiTests(TestCase):
             'comments': 'please clean my litter box, you slave',
         }
 
-        self.client.post(CONTACTS_URL, payload)
+        res = self.client.post(CONTACTS_URL, payload)
 
         exists = Contact.objects.filter(
             name = payload['name']
         ).exists()
 
+        self.assertEqual(res.status_code, status.HTTP_201_CREATED)
         self.assertTrue(exists)
 
     def test_get_method_not_allowed(self):
