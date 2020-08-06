@@ -29,6 +29,8 @@ ALLOWED_HOSTS = [
     'localhost', 
     'jacobus-portfolio-api.herokuapp.com', 
     'https://jacobus-portfolio-api.herokuapp.com',
+    'www.jacobus-portfolio-api.herokuapp.com',
+    'https://www.jacobus-portfolio-api.herokuapp.com',
     ]
 
 
