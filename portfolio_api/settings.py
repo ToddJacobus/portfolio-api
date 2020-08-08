@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 from urllib.parse import urlparse
-# import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +24,13 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = True if os.environ.get('DEBUG').lower() == 'true' else False
 
-ALLOWED_HOSTS = ['localhost', 'jacobus-portfolio-api.herokuapp.com']
+ALLOWED_HOSTS = [
+    'localhost', 
+    'jacobus-portfolio-api.herokuapp.com', 
+    'https://jacobus-portfolio-api.herokuapp.com',
+    'www.jacobus-portfolio-api.herokuapp.com',
+    'https://www.jacobus-portfolio-api.herokuapp.com',
+    ]
 
 
 # Application definition
@@ -37,12 +42,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'core',
     'contact',
 ]
 
 MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -136,10 +143,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'static'),
-# )
-
 # Custom user model
 AUTH_USER_MODEL = 'core.User'
 
@@ -161,6 +164,5 @@ REST_FRAMEWORK = {
 CSRF_COOKIE_SECURE = True if not os.environ.get('DEBUG').lower() == 'true' else False
 SESSION_COOKIE_SECURE = True if not os.environ.get('DEBUG').lower() == 'true' else False
 
-
-# Configure Django App for Heroku.
-# django_heroku.settings(locals())
+# Django cors settings
+CORS_ORIGIN_ALLOW_ALL = True
