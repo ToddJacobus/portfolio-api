@@ -42,12 +42,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'core',
     'contact',
 ]
 
 MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -161,3 +163,6 @@ REST_FRAMEWORK = {
 # Don't send tokens and keys over http
 CSRF_COOKIE_SECURE = True if not os.environ.get('DEBUG').lower() == 'true' else False
 SESSION_COOKIE_SECURE = True if not os.environ.get('DEBUG').lower() == 'true' else False
+
+# Django cors settings
+CORS_ORIGIN_ALLOW_ALL = True
