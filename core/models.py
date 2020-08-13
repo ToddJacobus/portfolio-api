@@ -38,7 +38,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 class Contact(models.Model):
-    name = models.CharField(max_length=255, blank=True)
+    name = models.CharField(max_length=255)
     email = models.EmailField(max_length=255)
     comments = models.TextField(max_length=10000, blank=True)
 
