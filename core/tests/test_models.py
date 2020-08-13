@@ -15,3 +15,13 @@ class ModelTests(TestCase):
         )
 
         self.assertEqual(contact.name, "Prof. Meow Meow")
+
+    def test_create_contact_blank_fields(self):
+        """test that we can leave the comments and name fields blank"""
+        contact = models.Contact.objects.create(
+            name="",
+            email="me@ww.meow",
+            comments = "",
+        )
+
+        self.assertEqual(contact.email, "me@ww.meow")
