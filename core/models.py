@@ -38,9 +38,9 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 class Contact(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, blank=True)
     email = models.EmailField(max_length=255)
-    comments = models.TextField(max_length=10000)
+    comments = models.TextField(max_length=10000, blank=True)
 
     def __str__(self):
         return self.name
