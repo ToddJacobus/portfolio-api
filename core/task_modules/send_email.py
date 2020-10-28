@@ -5,10 +5,6 @@ def send_email_to_me(*args, **kwargs):
     name = kwargs.get('name')
     email = kwargs.get('email')
     comments = kwargs.get('comments')
-    
-    for k,v in kwargs.items(): print(k,v)
-    # print(kwargs)
-    # print(args)
 
     send_mail(
         subject=f'ToddJacobus.io -- {name}',
