@@ -166,3 +166,20 @@ SESSION_COOKIE_SECURE = True if not os.environ.get('DEBUG').lower() == 'true' el
 
 # Django cors settings
 CORS_ORIGIN_ALLOW_ALL = True
+
+# Celery
+CELERY_BROKER_URL = os.environ.get('REDIS_URL')
+
+CELERY_RESULT_BACKEND = f"db+postgresql://{USER}:{PASSWORD}@{HOST}:{PORT}/{NAME}"
+
+CELERY_ACCEPT_CONTENT = ['application/json'] 
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+
+# Django Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_SSL = True
+EMAIL_PORT = 465
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')

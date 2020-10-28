@@ -2,6 +2,7 @@ from rest_framework import viewsets, mixins
 
 from core.models import Contact
 from contact import serializers
+from core.tasks import send_submission_notice
 
 
 class ContactVewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
@@ -12,3 +13,5 @@ class ContactVewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
     def perform_create(self, serializer):
         """create a new contact entry"""
         serializer.save()
+        # for k,v in serializer.validated_data.items(): print(k,v)
+        send_submission_notice(**serializer.validated_data)
